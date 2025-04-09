@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Paraphraser</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Keep only this header, remove any duplicate in your CSS -->
+        <header class="app-header">
+            <h1>AI Paraphraser</h1>
+            <p class="app-description">Transform your text with AI assistance</p>
+        </header>
+        
+        <div class="text-container">
+            <div class="text-section original">
+                <div class="text-header">
+                    <h2>Original Text</h2>
+                    <p class="counter"><span id="originalCounter">0</span>/1500 characters</p>
+                </div>
+                <div class="text-area-container">
+                  <textarea id="originalText" placeholder="Start typing or paste your text here..."></textarea>
+                  <button class="sample-text">
+                      <i class="fa-regular fa-file-lines"></i>
+                      <span>Sample text</span>
+                  </button>
+              </div>
+                <div class="controls">
+                    <div class="mode-selector">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Mode: </span>
+                        <span class="mode-value">Fluency</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <button id="paraphraseBtn" class="paraphrase-btn">Paraphrase</button>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="text-section modified">
+                <div class="text-header">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Modified Text</h2>
+                    <p class="counter"><span id="paraphrasedCounter">0</span>/1500 characters</p>
+                </div>
+                <div class="text-area-container result">
+                    <div id="placeholder-content">
+                        <div class="placeholder-icon">
+                            <img src="/static/img/note-edit.svg" alt="Edit icon">
+                        </div>
+                        <p>Your text will appear here</p>
+                    </div>
+                    <textarea id="paraphrasedText" readonly></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <button id="addToChrome" class="add-to-chrome-btn">Add to Chrome</button>
+        </div>
+    </div>
+  
+    <div id="modeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Mode</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="mode-option" data-mode="fluency">
+                    <div class="mode-info">
+                        <h4>Fluency</h4>
+                        <p>Natural-sounding paraphrasing</p>
+                    </div>
+                    <div class="mode-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="mode-option" data-mode="academic">
+                    <div class="mode-info">
+                        <h4>Academic</h4>
+                        <p>Formal academic style</p>
+                    </div>
+                    <div class="mode-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="mode-option" data-mode="simple">
+                    <div class="mode-info">
+                        <h4>Simple</h4>
+                        <p>Simplified language</p>
+                    </div>
+                    <div class="mode-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="mode-option" data-mode="creative">
+                    <div class="mode-info">
+                        <h4>Creative</h4>
+                        <p>More expressive and creative</p>
+                    </div>
+                    <div class="mode-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
