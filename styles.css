@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .app-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    display: block; /* Keep only this display property */
+  }
+  
+  .app-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .app-description {
+    font-size: 1rem;
+    color: #666;
+  }
+  .text-container {
+    display: flex;
+    min-height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+  }
+  
+  .text-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .original {
+    background-color: #fcf8f3;
+  }
+  
+  .modified {
+    background-color: #fff;
+  }
+  
+  .divider {
+    width: 2px;
+    background-color: #e0e0e0;
+  }
+  
+  .text-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .text-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .counter {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .text-area-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border: none;
+    resize: none;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: transparent;
+  }
+  
+  textarea:focus {
+    outline: none;
+  }
+  
+  #originalText {
+    background-color: #fcf8f3;
+  }
+  
+  /* Fix for sample text button overlap */
+  .sample-text {
+    position: absolute;
+    right: 20px;
+    bottom: 20px; /* Changed from top to bottom */
+    z-index: 10; /* Added z-index to ensure it's above the textarea */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .sample-text i {
+    font-size: 16px;
+  }
+  
+  .controls {
+    display: flex;
+    padding: 15px 20px;
+    gap: 10px;
+    border-top: 1px solid #eee;
+  }
+  
+  .mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    flex: 1;
+  }
+  
+  .mode-selector i.fa-wand-magic-sparkles {
+    color: #777;
+  }
+  
+  .mode-value {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .paraphrase-btn {
+    padding: 10px 25px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .paraphrase-btn:hover {
+    background-color: #e6e6e6;
+  }
+  
+  /* Add disabled state styling */
+  .paraphrase-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .paraphrase-btn.processing {
+    opacity: 0.7;
+    cursor: wait;
+    background-color: #e0e0e0;
+  }
+  
+  .fa-wand-magic-sparkles {
+    color: #f39c12;
+  }
+  
+  #placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  
+  .placeholder-icon {
+    margin-bottom: 15px;
+  }
+  
+  .placeholder-icon img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  #placeholder-content p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Fix for paraphrased text display */
+  #paraphrasedText {
+    display: none; /* Changed from visibility hidden to display none */
+  }
+  
+  .result.has-content #placeholder-content {
+    display: none;
+  }
+  
+  .result.has-content #paraphrasedText {
+    display: block; /* Changed from visibility visible to display block */
+  }
+  
+  /* Added copy button styles */
+  .copy-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .copy-btn.copied {
+    background-color: #e8f5e9;
+    border-color: #66bb6a;
+    color: #2e7d32;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .add-to-chrome-btn {
+    padding: 10px 20px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modal-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .close {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #777;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .mode-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .mode-option:last-child {
+    border-bottom: none;
+  }
+  
+  .mode-option:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .mode-info h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .mode-info p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .mode-check {
+    color: #f39c12;
+    display: none;
+  }
+  
+  .mode-option.active .mode-check {
+    display: block;
+  }
