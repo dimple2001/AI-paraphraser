@@ -10,7 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Keep only this header, remove any duplicate in your CSS -->
         <header class="app-header">
             <h1>AI Paraphraser</h1>
             <p class="app-description">Transform your text with AI assistance</p>
@@ -19,16 +18,20 @@
         <div class="text-container">
             <div class="text-section original">
                 <div class="text-header">
-                    <h2>Original Text</h2>
+                    <h2><i class="fa-solid fa-pen"></i> Original Text</h2>
                     <p class="counter"><span id="originalCounter">0</span>/1500 characters</p>
                 </div>
                 <div class="text-area-container">
-                  <textarea id="originalText" placeholder="Start typing or paste your text here..."></textarea>
-                  <button class="sample-text">
-                      <i class="fa-regular fa-file-lines"></i>
-                      <span>Sample text</span>
-                  </button>
-              </div>
+                    <textarea id="originalText" placeholder="Start typing or paste your text here..."></textarea>
+                    <button class="text-control-btn clear-btn" id="clearOriginalBtn">
+                        <i class="fa-solid fa-eraser"></i>
+                        <span>Clear</span>
+                    </button>
+                    <button class="text-control-btn sample-text">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span>Sample text</span>
+                    </button>
+                </div>
                 <div class="controls">
                     <div class="mode-selector">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -55,15 +58,26 @@
                         <p>Your text will appear here</p>
                     </div>
                     <textarea id="paraphrasedText" readonly></textarea>
+                    <div class="loading-animation">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <button class="text-control-btn clear-btn" id="clearModifiedBtn">
+                        <i class="fa-solid fa-eraser"></i>
+                        <span>Clear</span>
+                    </button>
                 </div>
             </div>
         </div>
         
         <div class="footer">
+            <div class="api-status offline">
+                <i class="fa-solid fa-circle"></i>
+                <span>API: Checking...</span>
+            </div>
             <button id="addToChrome" class="add-to-chrome-btn">Add to Chrome</button>
         </div>
     </div>
-  
+    
     <div id="modeModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
